@@ -57,29 +57,18 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className='text-base text-primary font-medium space-x-5 hidden lg:block'>
-          {!isAuthenticated ? (
+        {!isAuthenticated ? (
             <Link onClick={() => loginWithRedirect()} className='py-2 px-5 border rounded hover:bg-blue-500 hover:text-white'>
               Log in
             </Link>
           ) : (
             <div className='flex'>
-              <img className='w-10 h-10 rounded-full mr-3' src={user.picture} alt={user.name} />
+              <img className='w-10 h-10 rounded-full mr-3' onClick={handleMenuToggler} src={user.picture} alt={user.name} />
               <Link onClick={() => logout()} className='py-2 px-5 border rounded hover:bg-blue-500 hover:text-white'>
                 Logout
               </Link>
             </div>
           )}
-        </div>
-
-        <div className='md:hidden block'>
-          <button onClick={handleMenuToggler}>
-            {!isMenuOpen && <FiAlignJustify className='w-7 h-7 text-primary' />}
-          </button>
-          <button onClick={handleMenuToggler}>
-            {isMenuOpen && <ImCross className='w-5 h-5 text-primary' />}
-          </button>
-        </div>
       </nav>
 
       <div className={isMenuOpen ? "px-4 py-5 rounded-sm text-white bg-blue-900 md:hidden" : "hidden"}>
@@ -103,11 +92,6 @@ const Navbar = () => {
               )}
             </li>
           ))}
-          <li>
-            <Link className='text-white/80 font-bold py-1' to="/login">
-              Log in
-            </Link>
-          </li>
         </ul>
       </div>
     </header>
