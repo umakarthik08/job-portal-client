@@ -17,7 +17,7 @@ const SalaryPage = () => {
   };
 
   const handleRedirect = (title) => {
-    window.location.href = `http://localhost:5173?title=${encodeURIComponent(title.trim())}`;
+    window.location.href = `https://job-portal-client-iota.vercel.app/?title=${encodeURIComponent(title.trim())}`;
   };
 
   return (
