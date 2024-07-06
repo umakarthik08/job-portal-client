@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: "edit-job/:id",
                 element: <UpdateJob/>,
-                loader: ({params}) => fetch(`https://job-portal-server-psi-three.vercel.app/all-jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://job-portal-server-w1dw.onrender.com/all-jobs/${params.id}`)
             },
             {
                 path: "/login",

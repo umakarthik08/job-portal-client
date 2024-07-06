@@ -12,7 +12,7 @@ const MyJobs = () => {
 
     const fetchJobs = () => {
         setIsLoading(true);
-        fetch(`https://job-portal-server-psi-three.vercel.app/my-jobs/${email}`)
+        fetch(`https://job-portal-server-w1dw.onrender.com/my-jobs/${email}`)
             .then(res => res.json())
             .then(data => {
                 setJobs(data);
@@ -52,7 +52,7 @@ const MyJobs = () => {
     };
 
     const handleDelete = (id) => {
-        fetch(`https://job-portal-server-psi-three.vercel.app/job/${id}`, {
+        fetch(`https://job-portal-server-w1dw.onrender.com/job/${id}`, {
             method: "DELETE"
         }).then(res => res.json())
           .then(data => {

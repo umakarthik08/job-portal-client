@@ -10,7 +10,7 @@ const JobDetails = () => {
     const [job, setJobs] = useState([])
     const [applyState, setApplyState] = useState("Apply")
     useEffect(() => {
-        fetch(`https://job-portal-server-psi-three.vercel.app/all-jobs/${id}`).then(res => res.json()).then(data => setJobs(data))
+        fetch(`https://job-portal-server-w1dw.onrender.com/all-jobs/${id}`).then(res => res.json()).then(data => setJobs(data))
     }, [])
 
     const handleApply = async () => {
