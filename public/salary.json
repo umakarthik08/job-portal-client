@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "title": "Warehouse Associate",
+        "salary": "Average salary is ₹09,04,005",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 2,
+        "title": "Backend Developer",
+        "salary": "Average salary is ₹12,07,009",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 3,
+        "title": "Front Desk Agent",
+        "salary": "Average salary is ₹12,00,000",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 4,
+        "title": "Crew Member",
+        "salary": "Average salary is ₹12,03,007",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 5,
+        "title": "Software Engineer",
+        "salary": "Average salary is ₹28,04,002",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 6,
+        "title": "App Developer",
+        "salary": "Average salary is ₹25,07,003",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 7,
+        "title": "UI/UX Designer",
+        "salary": "Average salary is ₹30,09,002",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 8,
+        "title": "Web Developer",
+        "salary": "Average salary is ₹20,04,008",
+        "status": "Job Openings",
+        "skills": "Skills"
+    },
+    {
+        "id": 9,
+        "title": "Full Stack Developer",
+        "salary": "Average salary is ₹24,04,008",
+        "status": "Job Openings",
+        "skills": "Skills"
+    }
+]
