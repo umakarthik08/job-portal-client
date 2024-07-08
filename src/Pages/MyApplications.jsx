@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const MyJobs = () => {
+const MyApplications = () => {
     const [jobs, setJobs] = useState([]);
     const [searchText, setSearchText] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +12,7 @@ const MyJobs = () => {
 
     const fetchJobs = () => {
         setIsLoading(true);
-        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/my-jobs/${email}`)
+        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/my-applications/${email}`)
             .then(res => res.json())
             .then(data => {
                 setJobs(data);
@@ -52,12 +52,12 @@ const MyJobs = () => {
     };
 
     const handleDelete = (id) => {
-        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/job/${id}`, {
+        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/application/${id}`, {
             method: "DELETE"
         }).then(res => res.json())
           .then(data => {
             if (data.acknowledged === true) {
-                alert("Job deleted successfully");
+                alert("Application withdrawn successfully");
                 fetchJobs(); // Fetch the updated list of jobs
             }
         })
@@ -69,7 +69,7 @@ const MyJobs = () => {
     return (
         <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4'>
             <div className='my-jobs-container'>
-                <h1 className='text-center p-4'>All My Jobs</h1>
+                <h1 className='text-center p-4'>My Applications</h1>
                 <div className='search-box p-2 text-center mb-4'>
                     <input
                         onChange={e => setSearchText(e.target.value)}
@@ -84,12 +84,12 @@ const MyJobs = () => {
                         <div className="rounded-t mb-0 px-4 py-3 border-0">
                             <div className="flex flex-wrap items-center">
                                 <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                                    <h3 className="font-semibold text-s text-blueGray-700">All Jobs</h3>
+                                    <h3 className="font-semibold text-s text-blueGray-700">My Applications</h3>
                                 </div>
                                 <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                    <Link to="/post-job">
+                                    <Link to="/">
                                         <button className="bg-indigo-500 text-white active:bg-indigo-600 text-s font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                                            Post a new Job
+                                            Search a Job
                                         </button>
                                     </Link>
                                 </div>
@@ -113,13 +113,13 @@ const MyJobs = () => {
                                                 COMPANY NAME
                                             </th>
                                             <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                                SALARY
+                                                APPLIED AT
                                             </th>
                                             <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                                 EDIT
                                             </th>
                                             <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                                DELETE
+                                                WITHDRAW
                                             </th>
                                         </tr>
                                     </thead>
@@ -136,13 +136,13 @@ const MyJobs = () => {
                                                     {job.companyName}
                                                 </td>
                                                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                                                ₹ {job.minPrice}K - {job.maxPrice}K
+                                                 {job.date}
                                                 </td>
                                                 <td className="border-t-0 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-3">
-                                                    <button><Link to={`/edit-job/${job._id}?email=${email}`} className='bg-blue-500 py-2 px-6 text-white rounded-sm'>Edit</Link></button>
+                                                    <button><Link to={`/edit-application/${job._id}?email=${email}`} className='bg-blue-500 py-2 px-6 text-white rounded-sm'>Edit</Link></button>
                                                 </td>
                                                 <td className="border-t-0 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-3">
-                                                    <button onClick={() => handleDelete(job._id)} className='bg-red-700 py-2 px-6 text-white rounded-sm'>Delete</button>
+                                                    <button onClick={() => handleDelete(job._id)} className='bg-red-700 py-2 px-6 text-white rounded-sm'>Withdraw</button>
                                                 </td>
                                             </tr>
                                         ))}
@@ -166,4 +166,4 @@ const MyJobs = () => {
     );
 }
 
-export default MyJobs;
+export default MyApplications

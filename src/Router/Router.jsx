@@ -8,6 +8,9 @@ import SalaryPage from "../Pages/SalaryPage";
 import UpdateJob from "../Pages/UpdateJob";
 import Login from "../Components/Login";
 import JobDetails from "../Pages/JobDetails";
+import ApplyJob from "../Pages/ApplyJob";
+import MyApplications from "../Pages/MyApplications";
+import EditApplications from "../Pages/EditApplications";
 
 const router = createBrowserRouter([
     {
@@ -33,7 +36,12 @@ const router = createBrowserRouter([
             {
                 path: "edit-job/:id",
                 element: <UpdateJob/>,
-                loader: ({params}) => fetch(`https://job-portal-server-w1dw.onrender.com/all-jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/all-jobs/${params.id}`)
+            },
+            {
+                path: "edit-application/:id",
+                element: <EditApplications/>,
+                loader: ({params}) => fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/all-applications/${params.id}`)
             },
             {
                 path: "/login",
@@ -42,6 +50,14 @@ const router = createBrowserRouter([
             {
                 path: "/job/:id",
                 element: <JobDetails/>
+            },
+            {
+                path: "/apply-job",
+                element: <ApplyJob/>
+            }
+            ,{
+                path: "/my-applications",
+                element: <MyApplications/>
             }
         ]
     },

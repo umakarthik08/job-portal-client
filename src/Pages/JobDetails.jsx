@@ -1,29 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import PageHeader from '../Components/PageHeader';
 import { } from "react-icons/fi"
 import { FaBriefcase, FaIndianRupeeSign } from 'react-icons/fa6';
+import ApplyJob from './ApplyJob';
 
 const JobDetails = () => {
-    const { id } = useParams();
+    const { id} = useParams();
     const [job, setJobs] = useState([])
     const [applyState, setApplyState] = useState("Apply")
     useEffect(() => {
-        fetch(`https://job-portal-server-w1dw.onrender.com/all-jobs/${id}`).then(res => res.json()).then(data => setJobs(data))
+        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/all-jobs/${id}`).then(res => res.json()).then(data => setJobs(data))
     }, [])
-
-    const handleApply = async () => {
-        const { value: url } = await Swal.fire({
-            input: "url",
-            inputLabel: "Please provide your Resume link",
-            inputPlaceholder: "Enter your Resume link"
-        });
-        if (url) {
-            Swal.fire(`Job applied successfully`);
-            setApplyState("Applied");
-        }
-    }
 
     return (
         <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4'>
@@ -45,11 +34,8 @@ const JobDetails = () => {
                 <h3 className='font-bold'>About Us</h3>
                 <p>{job.description}</p>
             </div>
-            <button
-                className='mt-4 bg-blue-900 mb-8 900 px-8 py-2 text-white'
-                onClick={handleApply}
-                disabled={applyState === "Applied"}>
-                {applyState}
+            <button className='mt-4 bg-blue-900 mb-8 900 px-8 py-2'>
+                <Link className = "text-white" to= {`/apply-job?companyName=${job.companyName}&title=${job.jobTitle}&id=${id}`}>{applyState}</Link>
             </button>
         </div>
     )

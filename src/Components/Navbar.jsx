@@ -22,10 +22,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { path: "/", title: "Start a Search" },
     { path: isAuthenticated ? `/my-job?email=${user.email}` : "/my-job", title: "My Jobs" },
     { path: "/salary", title: "Salary Estimated" },
-    { path: isAuthenticated ? `/post-job?email=${user.email}` : "/post-job", title: "Post a Job" }
+    { path: isAuthenticated ? `/post-job?email=${user.email}` : "/post-job", title: "Post a Job" },
+    { path: isAuthenticated ? `/my-applications?email=${user.email}` : "/my-applications", title: "My Applications" },
   ];
 
   return (
