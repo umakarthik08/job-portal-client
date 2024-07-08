@@ -12,7 +12,7 @@ const MyJobs = () => {
 
     const fetchJobs = () => {
         setIsLoading(true);
-        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/my-jobs/${email}`)
+        fetch(`https://job-portal-server-w1dw.onrender.com/my-jobs/${email}`)
             .then(res => res.json())
             .then(data => {
                 setJobs(data);
@@ -52,7 +52,7 @@ const MyJobs = () => {
     };
 
     const handleDelete = (id) => {
-        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/job/${id}`, {
+        fetch(`https://job-portal-server-w1dw.onrender.com/job/${id}`, {
             method: "DELETE"
         }).then(res => res.json())
           .then(data => {

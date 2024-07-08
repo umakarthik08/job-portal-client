@@ -36,12 +36,12 @@ const router = createBrowserRouter([
             {
                 path: "edit-job/:id",
                 element: <UpdateJob/>,
-                loader: ({params}) => fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/all-jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://job-portal-server-w1dw.onrender.com/all-jobs/${params.id}`)
             },
             {
                 path: "edit-application/:id",
                 element: <EditApplications/>,
-                loader: ({params}) => fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/all-applications/${params.id}`)
+                loader: ({params}) => fetch(`https://job-portal-server-w1dw.onrender.com/all-applications/${params.id}`)
             },
             {
                 path: "/login",

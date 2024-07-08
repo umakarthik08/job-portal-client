@@ -22,7 +22,7 @@ const ApplyJob = () => {
         data.fieldOfStudy = selectedFs
         data.date = new Date().toISOString().split('T')[0]
         console.log(data)
-        fetch("https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/apply-job",
+        fetch("https://job-portal-server-w1dw.onrender.com/apply-job",
             {
                 method:"POST",
                 headers: {"content-type":"application/json"},

@@ -11,7 +11,7 @@ const JobDetails = () => {
     const [job, setJobs] = useState([])
     const [applyState, setApplyState] = useState("Apply")
     useEffect(() => {
-        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/all-jobs/${id}`).then(res => res.json()).then(data => setJobs(data))
+        fetch(`https://job-portal-server-w1dw.onrender.com/all-jobs/${id}`).then(res => res.json()).then(data => setJobs(data))
     }, [])
 
     return (

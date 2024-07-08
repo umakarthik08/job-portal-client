@@ -21,7 +21,7 @@ const UpdateJob = () => {
     const onSubmit = (data) => {
         data.skills = selectedOption
         // console.log(data)
-        fetch(`https://dashboard.render.com/web/srv-cq4i2no8fa8c73fpq3e0/update-job/${id}`,
+        fetch(`https://job-portal-server-w1dw.onrender.com/update-job/${id}`,
             {
                 method:"PATCH",
                 headers: {"content-type":"application/json"},
