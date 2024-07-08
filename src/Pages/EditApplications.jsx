@@ -27,7 +27,7 @@ const EditApplications = () => {
         else data.fieldOfStudy = fieldOfStudy
         data.date = new Date().toISOString().split('T')[0]
         console.log(data)
-        fetch(`https://job-portal-server-w1dw.onrender.com/update-application/${id}`,
+        fetch(`https://job-portal-server-ua61.onrender.com/update-application/${id}`,
             {
                 method:"PATCH",
                 headers: {"content-type":"application/json"},

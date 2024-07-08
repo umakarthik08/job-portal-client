@@ -16,7 +16,7 @@ export default function Home() {
   const title = params.get('title');
 
   useEffect(()=>{
-    fetch("https://job-portal-server-w1dw.onrender.com/all-jobs").then(res =>res.json()).then(data =>{
+    fetch("https://job-portal-server-ua61.onrender.com/all-jobs").then(res =>res.json()).then(data =>{
       setIsLoading(true)
       setJobs(data);
       setIsLoading(false)

@@ -18,7 +18,7 @@ const CreateJob = () => {
         data.skills = selectedOption
         data.postedBy = email;
         // console.log(data)
-        fetch("https://job-portal-server-w1dw.onrender.com/post-job",
+        fetch("https://job-portal-server-ua61.onrender.com/post-job",
             {
                 method:"POST",
                 headers: {"content-type":"application/json"},
