@@ -22,10 +22,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { path: isAuthenticated ? `/my-job?email=${user.email}` : "/my-job", title: "My Jobs" },
+    { path: `/my-job?email=${user?.email}`, title: "My Jobs" },
     { path: "/salary", title: "Salary Estimated" },
-    { path: isAuthenticated ? `/post-job?email=${user.email}` : "/post-job", title: "Post a Job" },
-    { path: isAuthenticated ? `/my-applications?email=${user.email}` : "/my-applications", title: "My Applications" },
+    { path: `/post-job?email=${user?.email}`, title: "Post a Job" },
+    { path: `/my-applications?email=${user?.email}`, title: "My Applications" }
   ];
 
   return (
@@ -38,58 +38,52 @@ const Navbar = () => {
         <ul className='hidden md:flex gap-12'>
           {navItems.map(({ path, title }) => (
             <li key={path} className='text-base'>
-              {(path.includes("my-job") || path.includes("post-job")) ? (
-                <span
-                  onClick={() => handleNavigation(path)}
-                  className='cursor-pointer text-base'
-                >
-                  {title}
-                </span>
-              ) : (
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => (isActive ? "text-blue-500 font-bold" : "")}
-                >
-                  {title}
-                </NavLink>
-              )}
+              <NavLink
+                to={path}
+                onClick={(e) => {
+                  if (!isAuthenticated) {
+                    e.preventDefault();
+                    loginWithRedirect();
+                  }
+                }}
+                className={({ isActive }) => (isActive ? "text-blue-500 font-bold" : "")}
+              >
+                {title}
+              </NavLink>
             </li>
           ))}
         </ul>
 
         {!isAuthenticated ? (
-            <Link onClick={() => loginWithRedirect()} className='py-2 px-5 border rounded hover:bg-blue-500 hover:text-white'>
-              Log in
+          <Link onClick={() => loginWithRedirect()} className='py-2 px-5 border rounded hover:bg-blue-500 hover:text-white'>
+            Log in
+          </Link>
+        ) : (
+          <div className='flex'>
+            <img className='w-10 h-10 rounded-full mr-3' onClick={handleMenuToggler} src={user.picture} alt={user.name} />
+            <Link onClick={() => logout()} className='py-2 px-5 border rounded hover:bg-blue-500 hover:text-white'>
+              Logout
             </Link>
-          ) : (
-            <div className='flex'>
-              <img className='w-10 h-10 rounded-full mr-3' onClick={handleMenuToggler} src={user.picture} alt={user.name} />
-              <Link onClick={() => logout()} className='py-2 px-5 border rounded hover:bg-blue-500 hover:text-white'>
-                Logout
-              </Link>
-            </div>
-          )}
+          </div>
+        )}
       </nav>
 
       <div className={isMenuOpen ? "px-4 py-5 rounded-sm text-white bg-blue-900 md:hidden" : "hidden"}>
         <ul>
           {navItems.map(({ path, title }) => (
             <li key={path} className='text-base'>
-              {(path.includes("my-job") || path.includes("post-job")) ? (
-                <span
-                  onClick={() => handleNavigation(path)}
-                  className='cursor-pointer text-base text-white/80 font-bold py-1'
-                >
-                  {title}
-                </span>
-              ) : (
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => (isActive ? "text-white font-bold py-1" : "text-white/80 font-bold py-1")}
-                >
-                  {title}
-                </NavLink>
-              )}
+              <NavLink
+                to={path}
+                onClick={(e) => {
+                  if (!isAuthenticated) {
+                    e.preventDefault();
+                    loginWithRedirect();
+                  }
+                }}
+                className={({ isActive }) => (isActive ? "text-white font-bold py-1" : "text-white/80 font-bold py-1")}
+              >
+                {title}
+              </NavLink>
             </li>
           ))}
         </ul>

@@ -77,15 +77,28 @@ const JobDetails = () => {
                 <h3 className="font-bold">About Us</h3>
                 <p>{job.description}</p>
             </div>
-            <button className="mt-4 bg-blue-900 mb-8 px-8 py-2" disabled={applyState === "Applied"}>
-                {applyState === "Applied" ? (
-                    <span className="text-white">{applyState}</span>
-                ) : (
-                    <Link className="text-white" to={`/apply-job?companyName=${job.companyName}&title=${job.jobTitle}&id=${id}`}>
-                        {applyState}
-                    </Link>
-                )}
-            </button>
+            <button
+    className="mt-4 bg-blue-900 mb-8 px-8 py-2"
+    disabled={applyState === "Applied"}
+    onClick={() => {
+        if (!isAuthenticated) {
+            alert("Please login to apply");
+            loginWithRedirect();
+        }
+    }}
+>
+    {isAuthenticated ? (
+        applyState === "Applied" ? (
+            <span className="text-white">{applyState}</span>
+        ) : (
+            <Link className="text-white" to={`/apply-job?companyName=${job.companyName}&title=${job.jobTitle}&id=${id}`}>
+                {applyState}
+            </Link>
+        )
+    ) : (
+        <span className="text-white">Apply</span>
+    )}
+</button>
 
         </div>
     );
